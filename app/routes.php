@@ -11,7 +11,19 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', ['as'=>'home', 'uses'=>'HomeController@index']);
+
+/**
+ * Login
+ */
+Route::get('login', ['as'=>'login', 'uses'=>'HomeController@login']);
+Route::get('disconnect', ['as'=>'disconnect', 'uses'=>'HomeController@disconnect']);
+Route::post('register', array('uses'=>'HomeController@checkLogin'));
+
+
+/**
+ * Create Apero
+ */
+
+Route::get('create',['before'=>'auth', 'as'=>'create', 'uses'=>'AperoController@index']);
+Route::post('postCreate',['before'=>'auth', 'as'=>'create', 'uses'=>'AperoController@postCreate']);
