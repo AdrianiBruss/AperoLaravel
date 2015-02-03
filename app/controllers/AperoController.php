@@ -21,24 +21,43 @@ class AperoController extends BaseController {
 
         $input = Input::all();
 
-        $this->apero->create($input);
+        if (Auth::check()){
+
+            $auth = Auth::id();
+
+        }else{
+
+            throw new Exception('No User found');
+        }
 
         $rules = [
             'title' => 'required',
-            'email'=>'required',
-            'date'=>'required',
-            'tag'=>'required',
-            'description'=>'required',
-
+            'content'=>'required',
         ];
 
         $v = Validator::make($input, $rules);
 
         if ($v->fails()){
-            return Redirect::route('create')->withErrors($v->messages());
-        }
 
-        return Redirect::route('create')->withMessage('Your post has been created');
+//            var_dump($v);
+//            die();
+
+            return Redirect::to('create')
+                ->withInput()
+                ->withErrors($v->messages())
+                ->withFlashMessage('Please fill out both inputs');
+
+        }else{
+
+
+            if ($input['tag_id'] == 0){
+                $input['tag_id'] = 1;
+            }
+
+            $this->apero->create($input);
+            return Redirect::route('home');
+
+        }
 
     }
 

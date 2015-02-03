@@ -15,24 +15,43 @@ class HomeController extends BaseController {
 	|
 	*/
 
+	protected $apero;
 
+	public function __construct(Apero $apero){
+
+		$this->apero = $apero;
+
+	}
 
 	public function index(){
 
-		$aperos = Apero::all();
+		$aperos = $this->apero->all();
 
-		return View::make('home', compact('aperos'));
+//		$aperos = $this->apero->take(3)->get();
+
+		return View::make('index', compact('aperos'));
 
 	}
+
+	public function showSingle($id){
+
+		$apero = $this->apero->find($id);
+
+		return View::make('apero.single', compact('apero'));
+
+	}
+
+
 	public function login(){
 
-		return View::make('login');
+		return View::make('login.login');
 
 	}
 
 	public function disconnect(){
 		Auth::logout();
-		return View::make('home');
+		$aperos = $this->apero->all();
+		return View::make('index', compact('aperos'));
 	}
 
 	public function checkLogin(){

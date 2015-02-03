@@ -11,8 +11,17 @@
 |
 */
 
+/**
+ * Home Page
+ */
 Route::get('/', ['as'=>'home', 'uses'=>'HomeController@index']);
 
+
+
+/**
+ * Page post
+ */
+Route::get('single/{id}', array('uses' => 'HomeController@showSingle'));
 /**
  * Login
  */
@@ -26,4 +35,6 @@ Route::post('register', array('uses'=>'HomeController@checkLogin'));
  */
 
 Route::get('create',['before'=>'auth', 'as'=>'create', 'uses'=>'AperoController@index']);
-Route::post('postCreate',['before'=>'auth', 'as'=>'create', 'uses'=>'AperoController@postCreate']);
+Route::post('postCreate',['before'=>'auth', 'as'=>'postCreate', 'uses'=>'AperoController@postCreate']);
+
+

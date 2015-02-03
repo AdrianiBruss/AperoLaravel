@@ -9,10 +9,14 @@
 class AperoTest extends TestCase{
 
     protected $mock;
+    protected $user_id;
 
     public function setUp(){
+
         parent::setUp();
         $this->mock = Mockery::mock('Eloquent', 'Apero');
+        $this->user_id = ['username'=>'Al', 'password'=>'Al'];
+
     }
 
     public function tearDown(){
@@ -23,64 +27,51 @@ class AperoTest extends TestCase{
     }
 
     /**
-     * @test
+     * @test testHome
+     */
+    public function testHome(){
+
+        $this->mock->shouldReceive('all')->once();
+        $this->app->instance('Apero', $this->mock);
+        $this->call('GET', '/');
+        $this->assertViewHas('aperos');
+
+    }
+
+    /**
+     * @test testAperoSuccess
      */
     public function testAperoSuccess(){
 
+        Auth::attempt($this->user_id, false);
+
         $input = [
             'title' => 'Apero',
-            'email'=>'email@email',
-            'url_thumbnail'=>'http://image.jpg',
-            'abstract'=>'bla',
             'date'=>new DateTime('now'),
-            'tag'=>'php',
-            'description'=>'blablabla',
+            'content'=>'blablabla',
             'user_id' => 1,
             'tag_id' => 2
         ];
 
-        $this->mock->shouldReceive('create')
-            ->once()
-            ->with($input);
-
-        $this->app->instance('Apero', $this->mock);
-
         $this->call('POST', 'postCreate', $input);
-
-        $this->assertRedirectedToRoute('create', null, ['message'=>'Your post has been created']);
-
+        $this->assertRedirectedToRoute('home', null);
 
     }
 
 
+    /**
+     * @test testAperoFails
+     */
     public function testAperoFails(){
 
-        $input = [
-            'title' => '',
-            'email'=>'',
-            'url_thumbnail'=>'http://image.jpg',
-            'abstract'=>'bla',
-            'date'=>new DateTime('now'),
-            'tag'=>'php',
-            'description'=>'blablabla',
-            'user_id' => 1,
-            'tag_id' => 2
-        ];
+        Auth::attempt($this->user_id, false);
 
-        $this->call('POST', 'postCreate', $input);
-
-        $this->assertRedirectedToRoute('create');
-        $this->assertSessionHasErrors($input);
+        $this->call('POST', 'postCreate');
+        $this->assertRedirectedToRoute('create', null);
+        $this->assertSessionHasErrors(['title', 'content']);
 
     }
 
 
-//    public function testRedirectForm(){
-//
-//        $this->call('POST', 'postCreate');
-//        $this->assertRedirectedToRoute('create', null, ['message'=>'Your post has been created']);
-//
-//
-//    }
 
 }

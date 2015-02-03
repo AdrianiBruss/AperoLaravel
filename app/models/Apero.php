@@ -8,6 +8,9 @@
 
 class Apero extends Eloquent {
 
+
+    protected $fillable = ['title', 'content', 'user_id', 'tag_id'];
+
     public function tag(){
         return $this->belongsTo('Tag');
     }
