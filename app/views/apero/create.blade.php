@@ -23,6 +23,7 @@
     {{Form::textarea('content')}}
 
     {{Form::hidden('user_id', Auth::id())}}
+    {{Form::hidden('abstract')}}
 
     {{Form::submit('Ajouter')}}
 

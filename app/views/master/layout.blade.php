@@ -25,7 +25,7 @@
                 </li>
             </ul>
             @if(Auth::check())
-                <a href="{{URL::to('disconnect')}}" class="btn btn-default navbar-btn navbar-right">Se Déconnecter</a>
+                <a href="{{URL::to('logout')}}" class="btn btn-default navbar-btn navbar-right">Se Déconnecter</a>
             @else
                 <a href="{{URL::to('login')}}" class="btn btn-default navbar-btn navbar-right">Se Connecter</a>
             @endif

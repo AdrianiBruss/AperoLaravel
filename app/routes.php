@@ -26,7 +26,7 @@ Route::get('single/{id}', array('uses' => 'HomeController@showSingle'));
  * Login
  */
 Route::get('login', ['as'=>'login', 'uses'=>'HomeController@login']);
-Route::get('disconnect', ['as'=>'disconnect', 'uses'=>'HomeController@disconnect']);
+Route::get('logout', ['as'=>'disconnect', 'uses'=>'HomeController@logout']);
 Route::post('register', array('uses'=>'HomeController@checkLogin'));
 
 

@@ -5,9 +5,9 @@
         @foreach($aperos as $apero)
             <h1><a href="{{URL::to('single', $apero->id)}}">{{$apero->title}}</a></h1>
             <img src="{{$apero->url_thumbnail}}" alt=""/>
-            <p>Texte court :{{$apero->abstract}}</p>
+            <h2>{{$apero->abstract}}</h2>
             <p>Date : {{$apero->date}}</p>
-            <p>Tag : {{$apero->tag_id}}</p>
+            <p><a href="#">{{$tags[$apero->tag_id]->name}}</a></p>
             <p><a href="{{URL::to('single', $apero->id)}}">Lire la suite ...</a></p>
         @endforeach
     @else

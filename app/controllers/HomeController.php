@@ -23,16 +23,24 @@ class HomeController extends BaseController {
 
 	}
 
+	/**
+	 * @return mixed
+	 * index home page
+	 */
 	public function index(){
 
 		$aperos = $this->apero->all();
-
 //		$aperos = $this->apero->take(3)->get();
-
-		return View::make('index', compact('aperos'));
+		$tags = Tag::all();
+		return View::make('index', compact('aperos', 'tags'));
 
 	}
 
+	/**
+	 * @param $id
+	 * @return mixed
+	 * show single Apero
+	 */
 	public function showSingle($id){
 
 		$apero = $this->apero->find($id);
@@ -42,13 +50,21 @@ class HomeController extends BaseController {
 	}
 
 
+	/**
+	 * @return mixed
+	 * return login page
+	 */
 	public function login(){
 
 		return View::make('login.login');
 
 	}
 
-	public function disconnect(){
+	/**
+	 * @return mixed
+	 * logout method
+	 */
+	public function logout(){
 		Auth::logout();
 		$aperos = $this->apero->all();
 		return View::make('index', compact('aperos'));
