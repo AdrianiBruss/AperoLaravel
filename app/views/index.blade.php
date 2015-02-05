@@ -1,6 +1,7 @@
 @extends('master.layout')
 
 @section('content')
+    {{Session::get('message')}}
     @if(count($aperos)!=0)
         @foreach($aperos as $apero)
             <div class="apero">

@@ -9,6 +9,8 @@ body #wrapper {
   padding: 60px 0 10px 20px;
   /*----------------------Page Home-------------------*/
 
+  /*----------------------Page Search-------------------*/
+
 }
 body #wrapper .apero {
   width: 300px;
@@ -25,6 +27,19 @@ body #wrapper .apero h1 {
 body #wrapper .apero img {
   height: 80px;
 }
+body #wrapper #search {
+  margin-top: 50px;
+}
+body #wrapper #search input {
+  margin: 10px 0 50px 0;
+}
+body #wrapper #search .ui-screen-hidden {
+  display: none;
+}
+body #wrapper #search .input-group-btn {
+  line-height: 55px;
+  vertical-align: top;
+}
 body .container .form-signin {
   max-width: 330px;
   padding: 15px;
@@ -32,6 +47,9 @@ body .container .form-signin {
 }
 body .container .form-signin .checkbox {
   font-weight: normal;
+}
+body .container .form-signin .checkbox #remember {
+  left: 22px;
 }
 body .container .form-signin .form-signin-heading,
 body .container .form-signin .checkbox {

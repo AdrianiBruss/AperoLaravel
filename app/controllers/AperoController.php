@@ -21,6 +21,14 @@ class AperoController extends BaseController {
 
     }
 
+    public function search(){
+
+        $aperos = $this->apero->all();
+        $tags = Tag::lists('name');
+        return View::make('apero.search', compact('aperos', 'tags'));
+
+    }
+
     /**
      * @return mixed
      * @throws Exception
@@ -70,7 +78,8 @@ class AperoController extends BaseController {
         $apero->save();
 
 //        var_dump($input);
-        return Redirect::route('home');
+        return Redirect::route('home')
+            ->withMessage('success');
 
 
 

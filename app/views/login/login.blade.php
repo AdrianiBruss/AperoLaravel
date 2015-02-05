@@ -11,11 +11,12 @@
         {{Form::label('password', 'Mot de passe', array('class' => 'sr-only'))}}
         {{Form::password('password', array('class'=>'form-control', 'placeholder'=>'Mot de passe'))}}
         <div class="checkbox">
-            <label>
-                <input type="checkbox" value="remember-me"> Se souvenir de moi
-            </label>
+
+            {{Form::label('remember', 'Se souvenir de moi')}}
+            {{Form::checkbox('remember', 'remember', true)}}
+
         </div>
-        {{Form::submit('S\'identifier', array('class'=>'btn btn-lg btn-primary btn-block'))}}
+        {{Form::submit('Submit', array('class'=>'btn btn-lg btn-primary btn-block', 'name'=>'submit'))}}
         <p><a href="{{URL::to('/')}}">Revenir sur le site</a></p>
     {{ Form::close() }}
 </div> <!-- /container -->

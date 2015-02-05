@@ -6,6 +6,10 @@
 
     <link rel="stylesheet" href="{{asset("/bower_components/bootstrap/dist/css/bootstrap.min.css")}}"/>
     <link rel="stylesheet" href="{{asset("/assets/css/styles.css")}}"/>
+    <script src={{asset("/bower_components/jquery/dist/jquery.min.js")}}></script>
+
+    @yield('jqm')
+
     <script src={{asset("/bower_components/angular/angular.js")}}></script>
 
 </head>
@@ -30,5 +34,6 @@
         </div>
 
     </div>
+    <script src="{{asset('assets/js/script.js')}}"></script>
 </body>
 </html>

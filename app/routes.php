@@ -38,3 +38,7 @@ Route::get('create',['before'=>'auth', 'as'=>'create', 'uses'=>'AperoController@
 Route::post('postCreate',['before'=>'auth', 'as'=>'postCreate', 'uses'=>'AperoController@postCreate']);
 
 
+/**
+ * Search Apero
+ */
+Route::get('search', ['as'=>'search', 'uses'=>'AperoController@search']);

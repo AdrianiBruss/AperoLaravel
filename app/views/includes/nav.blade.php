@@ -3,13 +3,13 @@
         <div class="container">
             <a class="navbar-brand" href="{{URL::to('/')}}">Apero Teck</a>
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li class="{{Request::path() == '/' ? 'active' : '';}}">
                     <a href="{{URL::to('/')}}">Accueil</a>
                 </li>
-                <li>
-                    <a href="#">Checher Apéro</a>
+                <li class="{{Request::path() == 'search' ? 'active' : '';}}">
+                    <a href="{{URL::to('search')}}">Checher Apéro</a>
                 </li>
-                <li>
+                <li class="{{Request::path() == 'create' ? 'active' : '';}}">
                     <a href="{{URL::to('create')}}">Organiser Apéro</a>
                 </li>
             </ul>
