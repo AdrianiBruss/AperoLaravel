@@ -3,9 +3,9 @@ return array(
 
     'default' => 'mysql',
     'connections' => array(
-        'host'      => 'localhost',
-        'database'  => 'db_aperoLaravel',
-        'username'  => 'root',
-        'password'  => 'adiibou94',
+        'host'      => getenv('DB_HOST'),
+        'database'  => getenv('DB_NAME'),
+        'username'  => getenv('DB_USERNAME'),
+        'password'  => getenv('DB_PASSWORD'),
     )
 );
