@@ -8,6 +8,6 @@ branches:
 before_script:
   - composer self-update
   - composer install
-  - "mysql -utravis -e 'create database if not exists `db_aperoLaravel`;'"
+  - "mysql -utravis -e 'create database if not exists `db_aperoLaravel`';"
 script:
   - vendor/bin/phpunit

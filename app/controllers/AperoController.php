@@ -30,15 +30,6 @@ class AperoController extends BaseController {
 
         $input = Input::all();
 
-        if (Auth::check()){
-
-            $auth = Auth::id();
-
-        }else{
-
-            throw new Exception('No User found');
-        }
-
         $rules = [
             'title' => 'required',
             'content'=>'required',
@@ -52,37 +43,54 @@ class AperoController extends BaseController {
                 ->withInput()
                 ->withErrors($v->messages())
                 ->withFlashMessage('Please fill out both inputs');
+        }
 
+        $apero                  = new Apero;
+        $apero->title           = $input['title'];
+        $apero->abstract        = str_limit($input['content'], 10);
+        $apero->content         = $input['content'];
+        if(Input::hasfile('url_thumbnail')){
+            $apero->url_thumbnail=$this->uploadImage();
+        }
+        $apero->status          = 'published';
+        if ($input['tag_id'] == 0){
+            $input['tag_id'] = 1;
+        }
+        $apero->tag_id          = intval($input['tag_id']);
+
+        if (Auth::check()){
+            $auth = Auth::id();
         }else{
+            throw new \RuntimeException('No User found');
+        }
 
-            if ($input['abstract'] == ''){
-                $abstract = str_limit($input['content'], 10);
-                $input['abstract'] = $abstract;
-            }
+        $apero->user_id         = $auth;
+        $apero->date            = $input['date'];
 
-            if ($input['tag_id'] == 0){
-                $input['tag_id'] = 1;
-            }
+        $apero->save();
 
-            $input['url_thumbnail'] = 'img.png';
-            $input['status'] = 'open';
+//        var_dump($input);
+        return Redirect::route('home');
 
-//            $this->apero->create($input);
 
-            $apero                  = new Apero;
-            $apero->title           = $input['title'];
-            $apero->abstract        = $input['abstract'];
-            $apero->content         = $input['content'];
-            $apero->url_thumbnail   = $input['url_thumbnail'];
-            $apero->status          = $input['status'];
-            $apero->tag_id          = $input['tag_id'];
-            $apero->user_id         = $input['user_id'];
-            $apero->date            = new DateTime('now');
 
-            $apero->save();
+    }
 
-            return Redirect::route('home');
+    public function uploadImage(){
 
+        $file = Input::file('url_thumbnail');
+        $files = [$file];
+        $rules = ['image' => 'image|mime:jpg,png,gif, jpeg|max:3000'];
+        $validator = Validator::make($files, $rules);
+        $fileExtension = $file->getClientOriginalExtension();
+        $destinationPath = 'uploads/';
+        $filename = str_random(15) . '.' . $fileExtension;
+        $upload_success = $file->move($destinationPath, $filename);
+        if ($upload_success) {
+            return $filename;
+        }else{
+            Session::flash('messageAperoCreate', "<p class='error bg-danger'><span class='glyphicon glyphicon-remove' style='color:red;'></span>Problème d'upload.</p>");
+            return Redirect::back();
         }
 
     }

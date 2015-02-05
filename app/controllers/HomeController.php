@@ -65,9 +65,12 @@ class HomeController extends BaseController {
 	 * logout method
 	 */
 	public function logout(){
+
 		Auth::logout();
+
 		$aperos = $this->apero->all();
-		return View::make('index', compact('aperos'));
+		$tags = Tag::all();
+		return View::make('index', compact('aperos', 'tags'));
 	}
 
 	public function checkLogin(){

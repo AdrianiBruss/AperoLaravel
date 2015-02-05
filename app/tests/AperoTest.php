@@ -27,7 +27,7 @@ class AperoTest extends TestCase{
     }
 
     /**
-     * @test testHome
+     * @test test aperos on home page
      */
     public function testHome(){
 
@@ -39,11 +39,9 @@ class AperoTest extends TestCase{
     }
 
     /**
-     * @test testAperoSuccess
+     * @test test success store apero
      */
     public function testAperoSuccess(){
-
-        Auth::attempt($this->user_id, false);
 
         $input = [
             'title' => 'Apero',
@@ -53,6 +51,8 @@ class AperoTest extends TestCase{
             'tag_id' => 2
         ];
 
+        Auth::attempt($this->user_id, false);
+
         $this->call('POST', 'postCreate', $input);
         $this->assertRedirectedToRoute('home', null);
 
@@ -60,18 +60,38 @@ class AperoTest extends TestCase{
 
 
     /**
-     * @test testAperoFails
+     * @test test failing store apero
      */
     public function testAperoFails(){
 
         Auth::attempt($this->user_id, false);
 
         $this->call('POST', 'postCreate');
+
         $this->assertRedirectedToRoute('create', null);
         $this->assertSessionHasErrors(['title', 'content']);
 
     }
 
+    /**
+     * @test test count tags
+     */
+    public function testCountTag(){
 
+        $input = [
+            'title' => 'Apero',
+            'date'=>new DateTime('now'),
+            'content'=>'blablabla',
+            'user_id' => 1,
+            'tag_id' => 2
+        ];
+
+        Auth::attempt($this->user_id, false);
+
+        $tag = Tag::findOrFail(8);
+        $this->assertEquals(0, $tag->count_apero);
+        $this->call('POST', 'postCreate', $input);
+
+    }
 
 }

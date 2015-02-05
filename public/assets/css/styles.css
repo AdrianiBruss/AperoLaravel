@@ -1,0 +1,61 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+  /*------------------------- Login -----------------*/
+
+}
+body #wrapper {
+  padding: 60px 0 10px 20px;
+  /*----------------------Page Home-------------------*/
+
+}
+body #wrapper .apero {
+  width: 300px;
+  height: 300px;
+  border: 1px solid #525252;
+  margin: 30px;
+  padding: 5px;
+  text-align: center;
+}
+body #wrapper .apero h1 {
+  text-align: left;
+  font-size: 16px;
+}
+body #wrapper .apero img {
+  height: 80px;
+}
+body .container .form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+body .container .form-signin .checkbox {
+  font-weight: normal;
+}
+body .container .form-signin .form-signin-heading,
+body .container .form-signin .checkbox {
+  margin-bottom: 10px;
+}
+body .container .form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+body .container .form-signin .form-control:focus {
+  z-index: 2;
+}
+body .container .form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+body .container .form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

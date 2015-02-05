@@ -11,8 +11,17 @@ class Apero extends Eloquent {
 
     protected $fillable = ['title', 'content', 'user_id', 'tag_id'];
 
+    public static function boot(){
+        parent::boot();
+        Apero::observe(new AperoObservers);
+    }
+
     public function tag(){
         return $this->belongsTo('Tag');
+    }
+
+    public function user(){
+        return $this->belongsTo('User');
     }
 
 }
