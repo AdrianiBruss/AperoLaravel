@@ -3,12 +3,9 @@ class AperoObservers{
 
     protected function countApero($apero){
 
-        if (!empty($apero->tag)){
+        $apero->tag->count_apero = $apero->tag->count_apero+1;
+        $apero->tag->save();
 
-            $apero->tag->count_apero = $apero->tag->count_apero++;
-            $apero->tag->save();
-
-        }
 
     }
 

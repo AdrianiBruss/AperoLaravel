@@ -1,0 +1,17 @@
+body{padding-top:40px;padding-bottom:40px;background-color:#eee}
+body #wrapper{padding:60px 0 10px 20px}
+body #wrapper .apero{width:300px;height:300px;border:1px solid #525252;margin:30px;padding:5px;text-align:center}
+body #wrapper .apero h1{text-align:left;font-size:16px}
+body #wrapper .apero img{height:80px}
+body #wrapper #search{margin-top:50px}
+body #wrapper #search input{margin:10px 0 50px}
+body #wrapper #search .ui-screen-hidden{display:none}
+body #wrapper #search .input-group-btn{line-height:55px;vertical-align:top}
+body .container .form-signin{max-width:330px;padding:15px;margin:0 auto}
+body .container .form-signin .checkbox{font-weight:400}
+body .container .form-signin .checkbox #remember{left:22px}
+body .container .form-signin .checkbox,body .container .form-signin .form-signin-heading{margin-bottom:10px}
+body .container .form-signin .form-control{position:relative;height:auto;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:10px;font-size:16px}
+body .container .form-signin .form-control:focus{z-index:2}
+body .container .form-signin input[type=email]{margin-bottom:-1px;border-bottom-right-radius:0;border-bottom-left-radius:0}
+body .container .form-signin input[type=password]{margin-bottom:10px;border-top-left-radius:0;border-top-right-radius:0}
