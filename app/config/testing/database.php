@@ -1,5 +1,11 @@
 <?php
 return array(
 
-    'default' => 'mysql'
+    'default' => 'mysql',
+    'connections' => array(
+        'host'      => 'localhost',
+        'database'  => 'db_aperoLaravel',
+        'username'  => 'root',
+        'password'  => 'adiibou94',
+    )
 );
