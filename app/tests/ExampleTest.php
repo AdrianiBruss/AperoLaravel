@@ -16,7 +16,7 @@ class ExampleTest extends TestCase {
 
 		parent::tearDown();
 		Artisan::call('migrate:reset');
-		
+
 	}
 
 	/**
