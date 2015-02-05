@@ -14,6 +14,8 @@ class AperoTest extends TestCase{
     public function setUp(){
 
         parent::setUp();
+        Artisan::call('migrate');
+        Artisan::call('db:seed');
         $this->mock = Mockery::mock('Eloquent', 'Apero');
         $this->user_id = ['username'=>'Al', 'password'=>'Al'];
 
@@ -22,6 +24,7 @@ class AperoTest extends TestCase{
     public function tearDown(){
 
         parent::tearDown();
+        Artisan::call('migrate:reset');
         Mockery::close();
 
     }
