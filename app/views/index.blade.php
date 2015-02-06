@@ -6,11 +6,12 @@
         @foreach($aperos as $apero)
             <div class="apero">
 
-                <h1><a href="{{URL::to('single', $apero->id)}}">{{$apero->title}}</a></h1>
+
                 <img src="{{asset("/uploads/$apero->url_thumbnail")}}" alt=""/>
-                <h2>{{$apero->abstract}}</h2>
+                <h1><a href="{{URL::to('single', $apero->id)}}">{{$apero->title}}</a></h1>
+                <p>{{$apero->abstract}}</p>
                 <p>Date : {{$apero->date}}</p>
-                <p><a href="#">{{$tags[$apero->tag_id]->name}}</a></p>
+                <p>Tag : {{$tags[$apero->tag_id-1]->name}}</p>
                 <p><a href="{{URL::to('single', $apero->id)}}">Lire la suite ...</a></p>
 
             </div>

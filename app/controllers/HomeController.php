@@ -36,19 +36,6 @@ class HomeController extends BaseController {
 
 	}
 
-	/**
-	 * @param $id
-	 * @return mixed
-	 * show single Apero
-	 */
-	public function showSingle($id){
-
-		$apero = $this->apero->find($id);
-
-		return View::make('apero.single', compact('apero'));
-
-	}
-
 
 	/**
 	 * @return mixed
@@ -73,6 +60,11 @@ class HomeController extends BaseController {
 		return View::make('index', compact('aperos', 'tags'));
 	}
 
+
+	/**
+	 * @return mixed
+	 * check login method
+	 */
 	public function checkLogin(){
 
 		$rules = array(

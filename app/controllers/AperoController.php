@@ -21,6 +21,24 @@ class AperoController extends BaseController {
 
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     * show single Apero
+     */
+    public function showSingle($id){
+
+        $apero = $this->apero->find($id);
+        $tags = Tag::lists('name');
+
+        return View::make('apero.single', compact('apero', 'tags'));
+
+    }
+
+    /**
+     * @return mixed
+     * show search page
+     */
     public function search(){
 
         $aperos = $this->apero->all();
@@ -57,13 +75,17 @@ class AperoController extends BaseController {
         $apero->title           = $input['title'];
         $apero->abstract        = str_limit($input['content'], 10);
         $apero->content         = $input['content'];
+
         if(Input::hasfile('url_thumbnail')){
             $apero->url_thumbnail=$this->uploadImage();
         }
+
         $apero->status          = 'published';
+
         if ($input['tag_id'] == 0){
             $input['tag_id'] = 1;
         }
+
         $apero->tag_id          = intval($input['tag_id']);
 
         if (Auth::check()){
@@ -77,11 +99,8 @@ class AperoController extends BaseController {
 
         $apero->save();
 
-//        var_dump($input);
         return Redirect::route('home')
             ->withMessage('success');
-
-
 
     }
 

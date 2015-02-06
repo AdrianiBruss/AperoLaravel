@@ -8,6 +8,7 @@
 
     <div id="search">
 
+        <h1>Chercher un apéro</h1>
         <div class="input-group">
             <span class="input-group-btn">
                 <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
@@ -21,7 +22,7 @@
         <ul id="apero-list" data-role="listview" data-filter="true" data-inset="true" data-input="#input-search">
         @foreach($aperos as $apero)
 
-            <li data-filtertext="{{$apero->title}} {{$apero->content}}"><a href="#">{{$apero->title}}</a> {{$apero->abstract}}</li>
+            <li data-filtertext="{{$apero->title}} {{$apero->content}} {{$tags[$apero->tag_id]}}"><a href="{{URL::to('single', $apero->id)}}">{{$apero->title}}</a> {{$apero->abstract}}</li>
 
         @endforeach
         </ul>

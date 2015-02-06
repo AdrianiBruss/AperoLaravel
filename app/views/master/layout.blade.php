@@ -5,7 +5,7 @@
     <title>Apero Techniques</title>
 
     <link rel="stylesheet" href="{{asset("/bower_components/bootstrap/dist/css/bootstrap.min.css")}}"/>
-    <link rel="stylesheet" href="{{asset("/assets/css/styles.css")}}"/>
+    <link rel="stylesheet" href="{{asset("/dist/styles.css")}}"/>
     <script src={{asset("/bower_components/jquery/dist/jquery.min.js")}}></script>
 
     @yield('jqm')
@@ -34,6 +34,6 @@
         </div>
 
     </div>
-    <script src="{{asset('assets/js/script.js')}}"></script>
+    <script src="{{asset('dist/script.js')}}"></script>
 </body>
 </html>

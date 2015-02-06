@@ -16,12 +16,6 @@
  */
 Route::get('/', ['as'=>'home', 'uses'=>'HomeController@index']);
 
-
-
-/**
- * Page post
- */
-Route::get('single/{id}', array('uses' => 'HomeController@showSingle'));
 /**
  * Login
  */
@@ -29,6 +23,13 @@ Route::get('login', ['as'=>'login', 'uses'=>'HomeController@login']);
 Route::get('logout', ['as'=>'disconnect', 'uses'=>'HomeController@logout']);
 Route::post('register', array('uses'=>'HomeController@checkLogin'));
 
+
+
+
+/**
+ * Page single apero
+ */
+Route::get('single/{id}', array('uses' => 'AperoController@showSingle'));
 
 /**
  * Create Apero
